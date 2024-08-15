@@ -5,9 +5,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
+@SessionAttributes("u")
 public class Session_Controller {
+
+    @ModelAttribute("u")
+    public User setUpUserForm() {
+        return new User();
+    }
 
     @GetMapping("/dologin")
     public String doLogin(@ModelAttribute("u") User u, @org.jetbrains.annotations.NotNull Model model) {
